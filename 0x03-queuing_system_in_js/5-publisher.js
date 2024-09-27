@@ -7,7 +7,7 @@ client.on('error', (err) =>
 );
 
 client.on('connect', (err) =>
-  console.error('Redis client connected to the server')
+  console.log('Redis client connected to the server')
 );
 
 function publishMessage(message, time) {
