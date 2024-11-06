@@ -48,14 +48,19 @@ class Server:
         data_dict = self.__indexed_dataset
         next_index = index
         data = []
+        while len(data) < page_size:
+            if next_index in data_dict:
+                data.append(data_dict[next_index])
+            next_index += 1
 
-        for i in range(index, index + page_size):
-            if i in data_dict:
-                data.append(data_dict[i])
-                next_index = i + 1
+        # for i in range(index, index + page_size):
+        #     if i in data_dict:
+        #         data.append(data_dict[i])
+        #         next_index += 1
+
         return {
             "index": index,
-            "next_index": next_index,
-            "page_size": page_size,
             "data": data,
+            "page_size": page_size,
+            "next_index": next_index,
         }
